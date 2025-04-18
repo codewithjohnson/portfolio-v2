@@ -60,7 +60,7 @@ export default function Home() {
         <div className="mt-8 rounded-lg bg-gray-50 px-4 py-4 shadow-sm md:mt-12 md:rounded-xl md:px-6 md:py-6 dark:bg-gray-800/60">
           <div className="mb-3 flex items-center justify-between md:mb-4">
             <h2 className="text-xl font-bold tracking-tight text-gray-900 md:text-2xl dark:text-gray-100">
-              My Expertise
+              Skills
             </h2>
             <Link
               href="/about"
