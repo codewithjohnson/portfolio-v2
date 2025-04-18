@@ -1,7 +1,7 @@
-import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
+import ListLayoutWithOutTags from '@/layouts/ListLayoutWithoutTags'
 
 const POSTS_PER_PAGE = 5
 
@@ -32,7 +32,7 @@ export default async function Page(props: { params: Promise<{ page: string }> })
   }
 
   return (
-    <ListLayout
+    <ListLayoutWithOutTags
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
