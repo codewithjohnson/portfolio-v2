@@ -2,27 +2,61 @@
 
 import React from 'react'
 import Link from '@/components/Link'
+import { motion } from 'motion/react'
 
 export default function Home() {
-  return (
-    <div className="fade-in flex min-h-[70vh] items-center px-4 sm:px-6">
-      <div className="max-w-3xl">
-        <div className="fade-in banner flex flex-col">
-          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
-            Hi, I am Johnson
-          </h1>
-          <p className="my-2 font-mono text-xs text-gray-700 md:my-4 md:text-sm dark:text-gray-300">
-            Software Engineer • Researcher • Scientist • Web Performance
-          </p>
+  const nameLetters = 'Johnson'.split('')
 
-          <div className="mt-3 flex flex-wrap gap-2 md:mt-4 md:gap-4">
+  return (
+    <div className="flex min-h-[70vh] items-center px-4 sm:px-6">
+      <div className="max-w-2xl">
+        <div className="space-y-6">
+          <h1 className="flex text-4xl font-light tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+            {nameLetters.map((letter, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1,
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+              className="text-purple-500"
+            >
+              .
+            </motion.span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="font-mono text-sm text-gray-600 dark:text-gray-400"
+          >
+            Software Engineer • Researcher • Web Performance
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+            className="flex flex-wrap gap-3 pt-4"
+          >
             <Link
               href="/about"
-              className="inline-flex items-center rounded-md bg-gray-100 px-3 py-1.5 text-sm font-medium text-black transition-all duration-300 hover:bg-gray-200 hover:ring-2 hover:ring-gray-300 md:px-4 md:py-2 md:text-base dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:ring-gray-600"
+              className="group inline-flex items-center rounded-lg bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 transition-all hover:bg-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-900/50"
             >
               About me
               <svg
-                className="ml-1.5 h-3.5 w-3.5 md:ml-2 md:h-4 md:w-4"
+                className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -37,11 +71,11 @@ export default function Home() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-md bg-gray-100 px-3 py-1.5 text-sm font-medium text-black transition-all duration-300 hover:bg-gray-200 hover:ring-2 hover:ring-gray-300 md:px-4 md:py-2 md:text-base dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:ring-gray-600"
+              className="group inline-flex items-center rounded-lg bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700 transition-all hover:bg-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:hover:bg-orange-900/50"
             >
               Contact me
               <svg
-                className="ml-1.5 h-3.5 w-3.5 md:ml-2 md:h-4 md:w-4"
+                className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -54,51 +88,7 @@ export default function Home() {
                 />
               </svg>
             </Link>
-          </div>
-        </div>
-
-        <div className="mt-8 rounded-lg bg-gray-50 px-4 py-4 shadow-sm md:mt-12 md:rounded-xl md:px-6 md:py-6 dark:bg-gray-800/60">
-          <div className="mb-3 flex items-center justify-between md:mb-4">
-            <h2 className="text-xl font-bold tracking-tight text-gray-900 md:text-2xl dark:text-gray-100">
-              Skills
-            </h2>
-            <Link
-              href="/about"
-              className="text-primary-500 dark:text-primary-400 flex items-center text-xs font-medium hover:underline md:text-sm"
-            >
-              Show more
-              <svg
-                className="ml-1 h-3 w-3 md:h-4 md:w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
-          </div>
-          <div className="flex flex-wrap gap-1.5 md:gap-2">
-            <span className="rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700 md:text-sm dark:bg-blue-900/30 dark:text-blue-300">
-              Go
-            </span>
-            <span className="rounded-md bg-cyan-50 px-2 py-0.5 text-xs font-medium text-cyan-700 md:text-sm dark:bg-cyan-900/30 dark:text-cyan-300">
-              React Native
-            </span>
-            <span className="rounded-md bg-yellow-50 px-2 py-0.5 text-xs font-medium text-yellow-700 md:text-sm dark:bg-yellow-900/30 dark:text-yellow-300">
-              JavaScript
-            </span>
-            <span className="rounded-md bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700 md:text-sm dark:bg-indigo-900/30 dark:text-indigo-300">
-              TypeScript
-            </span>
-            <span className="rounded-md bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700 md:text-sm dark:bg-green-900/30 dark:text-green-300">
-              Python
-            </span>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

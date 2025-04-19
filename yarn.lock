@@ -6169,6 +6169,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^12.7.4":
+  version: 12.7.4
+  resolution: "framer-motion@npm:12.7.4"
+  dependencies:
+    motion-dom: ^12.7.4
+    motion-utils: ^12.7.2
+    tslib: ^2.4.0
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 8fce21facbd124fe578b97eca51045b20ab975270eb266799602b494709b97d55906938a45e6c61b138d2f8d2e142c640aea199a9941f46b5a618b1a2cec8492
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^3.0.0":
   version: 3.0.3
   resolution: "fs-minipass@npm:3.0.3"
@@ -7925,6 +7947,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.501.0":
+  version: 0.501.0
+  resolution: "lucide-react@npm:0.501.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 634845d8ebc8988b91370ef456ec2dd0cc11a90ec17f52efae0275ba9dd53fd329d9a5a900c46c4c0f46c800974fea2db9e79ae13035dbf0e480d230f9208878
+  languageName: node
+  linkType: hard
+
 "make-fetch-happen@npm:^14.0.3":
   version: 14.0.3
   resolution: "make-fetch-happen@npm:14.0.3"
@@ -8938,6 +8969,43 @@ __metadata:
   version: 0.5.2
   resolution: "moo@npm:0.5.2"
   checksum: 5a41ddf1059fd0feb674d917c4774e41c877f1ca980253be4d3aae1a37f4bc513f88815041243f36f5cf67a62fb39324f3f997cf7fb17b6cb00767c165e7c499
+  languageName: node
+  linkType: hard
+
+"motion-dom@npm:^12.7.4":
+  version: 12.7.4
+  resolution: "motion-dom@npm:12.7.4"
+  dependencies:
+    motion-utils: ^12.7.2
+  checksum: 3d43d338bd188fb9144bd8f8e45fb7d8b935e38d3d7595f5cd2e7d960b3758f86f2777a31eb1bafd9a8c98b85c512cc19490e43fafbda715eda3ef0e9cfa4668
+  languageName: node
+  linkType: hard
+
+"motion-utils@npm:^12.7.2":
+  version: 12.7.2
+  resolution: "motion-utils@npm:12.7.2"
+  checksum: 212b6d6ef8c396deb4a0ec21ae499866d571abfeef3c73db2a4b549b178b7a6f790d721c6724af2d9547a3b9c325e0c24173117e6a1c346d8026dfb42893b460
+  languageName: node
+  linkType: hard
+
+"motion@npm:^12.7.4":
+  version: 12.7.4
+  resolution: "motion@npm:12.7.4"
+  dependencies:
+    framer-motion: ^12.7.4
+    tslib: ^2.4.0
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: f1eff363fedae36b7f737a175c7fee19842cd9798147dc803c2a0d659fecec79faba729025a48a91967c48a832197c009a02cef9a532abcab06a51145f4d0d61
   languageName: node
   linkType: hard
 
@@ -11464,6 +11532,8 @@ __metadata:
     husky: ^9.0.0
     image-size: 2.0.1
     lint-staged: ^13.0.0
+    lucide-react: ^0.501.0
+    motion: ^12.7.4
     next: 15.2.4
     next-contentlayer2: 0.5.5
     next-themes: ^0.4.6
