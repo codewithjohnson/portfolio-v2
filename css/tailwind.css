@@ -97,6 +97,7 @@
   .prose {
     & a {
       color: var(--color-primary-500);
+      text-underline-offset: 0.4em;
       &:hover {
         color: var(--color-primary-600);
       }
