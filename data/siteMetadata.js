@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://www.muyiwajohnson.dev/',
   siteRepo: 'https://github.com/codewithjohnson/portfolio-v2',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/banner.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/banner.jpg`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'codewithjohnson@gmail.com',
   github: 'https://github.com/codewithjohnson',
