@@ -304,6 +304,68 @@ This component is the heart of our tour guide system. I use a combination of hoo
 
 The `useEffect` hook listens for changes in the current step and window size, ensuring that the tooltip and spotlight are always correctly positioned.
 
+Next is the `index` page
+
+```typescript
+// src/pages/index.tsx
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { AppLayout } from "@/components/AppLayout";
+import { TourGuide, TourStep } from "@/components/TourGuide";
+
+const Index = () => {
+  const [isTourOpen, setIsTourOpen] = useState(false);
+
+  // Define tour steps
+  const tourSteps: TourStep[] = [
+    {
+      target: "#header",
+      title: "Welcome to TourGuide",
+      content: "This is a demonstration of an in-app guided tour. Let's explore the interface together!",
+      position: "bottom"
+    },
+    {
+      target: "#create-tour",
+      title: "Create New Tours",
+      content: "Click here to create a new tour for your application. You can customize each step and target specific elements.",
+      position: "bottom"
+    },
+   ... other steps
+
+  ];
+
+  const startTour = () => {
+    setIsTourOpen(true);
+  };
+
+  const endTour = () => {
+    setIsTourOpen(false);
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <div className="fixed top-4 right-4 z-40">
+        <Button onClick={startTour} className="shadow-lg">
+          Start Tour
+        </Button>
+      </div>
+
+      <AppLayout />
+
+      <TourGuide
+        steps={tourSteps}
+        isOpen={isTourOpen}
+        onClose={endTour}
+        onFinish={endTour}
+      />
+    </div>
+  );
+};
+
+export default Index;
+```
+
 ## Tour Guide Mechanics
 
 ### Spotlight Effect
