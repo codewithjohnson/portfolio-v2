@@ -1,0 +1,121 @@
+---
+title: Heard of Reactivity in Vanilla JavaScript?
+date: '2025-04-26'
+tags: ['javascript', 'reactivity', 'web-development']
+draft: false
+authors: ['default']
+summary: Delve into the world of reactivity in vanilla JavaScript. Learn how to build a basic reactivity system from scratch, understanding the core principles behind modern UI frameworks.
+---
+
+![reactivity-vanilla-js](/static/blogs/reactivity-in-vanilla-javascript/banner.jpg)
+
+# Unveiling Reactivity in Vanilla JavaScript
+
+Many developers shy away from building complex web applications with vanilla JavaScript, often citing a lack of built-in structure and features. While frameworks like React, Vue, and Angular offer powerful abstractions, it's easy to forget that the underlying principles can be implemented directly in JavaScript. One of the most crucial of these principles is **reactivity**: the ability for the UI to automatically update in response to data changes.
+
+This article explores how to create a basic reactivity system using vanilla JavaScript, providing a deeper understanding of how modern UI frameworks operate under the hood.
+
+## The Challenge: Why Vanilla JavaScript Isn't Reactive by Default
+
+Vanilla JavaScript lacks a built-in mechanism for automatically tracking data dependencies and triggering UI updates. This means that when a value changes, you must manually update the DOM to reflect that change. This approach can become cumbersome and error-prone, especially in larger applications. Consider this example:
+
+```javascript
+const state = { count: 0 }
+const counterEl = document.getElementById('counter')
+
+// Problem: The UI doesn't update when state changes!
+state.count++ // Nothing happens visually
+
+// Manual update required
+counterEl.textContent = state.count
+```
+
+In this scenario, incrementing `state.count` doesn't automatically update the `counterEl` element. We need to explicitly set the `textContent` property to reflect the new value. The core issue lies in this disconnect:
+
+```javascript
+state.count++ // Changes data but doesn't update UI
+```
+
+This lack of connection between data modifications and UI rendering is the fundamental problem that reactivity systems solve.
+
+## The Solution: Implementing Reactivity with Proxies
+
+Fortunately, JavaScript provides a powerful tool for implementing reactivity: **Proxies**.
+
+### Understanding Proxies
+
+Proxies allow you to intercept and redefine fundamental operations on an object, such as property access, assignment, and deletion. This enables you to observe and react to changes in an object's state. Proxies rely on **traps**, which are methods that intercept specific operations. For example, the `set` trap is triggered whenever a property is assigned a new value.
+
+Consider this example:
+
+```javascript
+const country = new Proxy(
+  {},
+  {
+    set(target, property, value) {
+      if (property === 'capital' && value !== 'Abuja') {
+        throw new Error('Capital must be Abuja!')
+      }
+      target[property] = value
+      return true
+    },
+  }
+)
+
+country.capital = 'Lagos' // Error: Capital must be Abuja!
+
+country.capital = 'Abuja' // No error
+console.log(country.capital) // Abuja
+```
+
+In this example, the `set` trap intercepts assignments to the `capital` property. If the assigned value is not `"Abuja"`, an error is thrown, enforcing a constraint on the object's state.
+
+### Building a Simple Reactivity System
+
+We can leverage Proxies to create a basic reactivity system that automatically updates the UI whenever the state changes:
+
+```javascript
+function createReactiveState(initialState, renderCallback) {
+  return new Proxy(initialState, {
+    set(target, property, value) {
+      // Update the property
+      target[property] = value
+
+      // Call the render function whenever state changes
+      renderCallback()
+
+      return true
+    },
+  })
+}
+
+// Example usage
+const appState = createReactiveState({ count: 0 }, () => {
+  document.getElementById('counter').textContent = appState.count
+})
+
+document.getElementById('increment').addEventListener('click', () => {
+  appState.count++
+})
+```
+
+In this example, the `createReactiveState` function takes an initial state object and a `renderCallback` function. It returns a Proxy that intercepts `set` operations. Whenever a property is assigned a new value, the `set` trap updates the property and then invokes the `renderCallback` function, allowing you to update the UI.
+
+Using this system, we can achieve automatic UI updates with minimal code:
+
+```javascript
+// Setup (one time)
+const state = createReactiveState(
+  { count: 0 },
+  () => (document.getElementById('counter').textContent = state.count)
+)
+
+state.count++ // UI updates AUTOMATICALLY
+state.count = 100 // this also works (UI updates AUTOMATICALLY)
+```
+
+## Conclusion
+
+This simple example demonstrates the core concept of reactivity. By leveraging Proxies, you can build systems that automatically track data dependencies and trigger UI updates, reducing boilerplate code and improving the maintainability of your applications.
+
+While this is a basic implementation, it showcases the fundamental principles behind more complex reactivity systems used in modern UI frameworks and libraries. Understanding these principles empowers you to build more efficient and maintainable web applications, regardless of the tools you choose.
