@@ -1,14 +1,15 @@
 {
   "nextjs": 1,
   "pwa": 1,
-  "web-development": 1,
+  "web-development": 2,
+  "javascript": 3,
+  "reactivity": 1,
   "typescript": 3,
   "state-management": 1,
   "event-emitters": 1,
   "react": 1,
   "hooks": 1,
   "design-patterns": 2,
-  "javascript": 2,
   "architecture": 1,
   "performance": 1,
   "optimization": 1
